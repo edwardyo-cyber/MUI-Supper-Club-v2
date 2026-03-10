@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membership — MUI 無為 Supper Club</title>
+  <meta name="description" content="MUI Supper Club Membership — Prestige, VIP Club, and Founder Club. Premium champagne, private chef's table, omakase dinners, and access that money alone cannot buy.">
+  <meta name="keywords" content="MUI Supper Club membership, VIP dining membership, luxury restaurant membership, founder club, omakase membership, champagne membership, fine dining VIP">
+  <meta name="author" content="MUI Supper Club">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.muisupperclub.com/membership.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Membership — MUI 無為 Supper Club">
+  <meta property="og:description" content="MUI membership is not a loyalty card. It is a key to a world most will never see.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.muisupperclub.com/membership.html">
+  <meta property="og:site_name" content="MUI Supper Club">
+
+  <!-- Performance -->
+  <meta name="theme-color" content="#0a0a0a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       MUI 無為 — Membership Page
+       ═══════════════════════════════════════════ */
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --black-rich: #050505;
+      --black-soft: #111111;
+      --charcoal: #1a1a1a;
+      --graphite: #2a2a2a;
+      --ash: #3a3a3a;
+      --stone: #666666;
+      --silver: #999999;
+      --mist: #cccccc;
+      --cream: #e8e4de;
+      --white: #f5f3ef;
+      --gold: #c4a265;
+      --gold-light: #d4b87a;
+      --gold-dim: #8a7245;
+      --accent: #8b7355;
+      --vermillion: #D4411E;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-body: 'Inter', sans-serif;
+
+      --ease-luxury: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --ease-dramatic: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ash) var(--black);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── Cursor ── */
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.15s var(--ease-luxury), opacity 0.3s;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+
+    .cursor.hovering {
+      transform: translate(-50%, -50%) scale(2.5);
+      background: rgba(196, 162, 101, 0.08);
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.6s var(--ease-luxury);
+      background: rgba(5, 5, 5, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(196, 162, 101, 0.1);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .nav-logo-kanji {
+      font-family: var(--font-jp);
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+    }
+
+    .nav-logo-divider {
+      width: 1px;
+      height: 24px;
+      background: var(--gold-dim);
+    }
+
+    .nav-logo-en {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--silver);
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: color 0.4s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.4s var(--ease-luxury);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-reserve {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 0.7rem 2rem;
+      text-decoration: none;
+      transition: all 0.4s var(--ease-luxury);
+    }
+
+    .nav-reserve:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── Mobile Menu ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1001;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--white);
+      transition: all 0.4s var(--ease-luxury);
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.98);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s var(--ease-luxury);
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold);
+    }
+
+    /* ── Membership Hero ── */
+    .membership-hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .membership-hero::before {
+      content: '会員';
+      position: absolute;
+      font-family: var(--font-jp);
+      font-size: clamp(8rem, 20vw, 20rem);
+      font-weight: 200;
+      color: rgba(196, 162, 101, 0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .membership-hero .section-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .membership-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .membership-hero .gold-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    .membership-hero .hero-statement {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--mist);
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    /* ── Opening Month Banner ── */
+    .opening-banner {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(180deg, rgba(196, 162, 101, 0.06) 0%, transparent 100%);
+      border-top: 1px solid rgba(196, 162, 101, 0.15);
+      border-bottom: 1px solid rgba(196, 162, 101, 0.15);
+    }
+
+    .opening-banner .banner-label {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .opening-banner h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .opening-banner p {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 200;
+      color: var(--silver);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Tier Cards ── */
+    .tiers {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .tier-card {
+      background: var(--charcoal);
+      border: 1px solid var(--graphite);
+      overflow: hidden;
+      transition: border-color 0.5s var(--ease-luxury), transform 0.5s var(--ease-luxury);
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .tier-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tier-card:hover {
+      border-color: var(--gold-dim);
+      transform: translateY(-4px);
+    }
+
+    .tier-card-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+      transition: filter 0.5s var(--ease-luxury);
+    }
+
+    .tier-card:hover .tier-card-image {
+      filter: brightness(1);
+    }
+
+    .tier-card-body {
+      padding: 2.5rem 2rem;
+    }
+
+    .tier-card-name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-card-price {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .tier-card-price span {
+      font-size: 0.9rem;
+      color: var(--silver);
+      font-family: var(--font-body);
+      font-weight: 200;
+    }
+
+    .tier-card-limit {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .tier-card-tagline {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--mist);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .tier-card-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold-dim);
+      margin-bottom: 1.5rem;
+    }
+
+    .tier-card-benefits {
+      list-style: none;
+    }
+
+    .tier-card-benefits li {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 200;
+      color: var(--mist);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding-left: 1.2rem;
+      position: relative;
+      letter-spacing: 0.02em;
+    }
+
+    .tier-card-benefits li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+    }
+
+    .tier-card-benefits li:last-child {
+      border-bottom: none;
+    }
+
+    .tier-card-cta {
+      display: block;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: all 0.4s var(--ease-luxury);
+    }
+
+    .tier-card-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── Comparison Table ── */
+    .comparison {
+      padding: 4rem 2rem 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .comparison-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .comparison-header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .comparison-header .section-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .comparison-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .comparison-table-wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    .comparison-table thead th {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 1.2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid var(--gold-dim);
+    }
+
+    .comparison-table thead th:first-child {
+      text-align: left;
+      color: var(--silver);
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+    }
+
+    .comparison-table tbody td {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 200;
+      color: var(--mist);
+      padding: 0.9rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .comparison-table tbody td:first-child {
+      text-align: left;
+      color: var(--silver);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    .comparison-table tbody tr:hover {
+      background: rgba(196, 162, 101, 0.03);
+    }
+
+    .check {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .dash {
+      color: var(--ash);
+    }
+
+    /* ── Bottom CTA ── */
+    .membership-cta {
+      text-align: center;
+      padding: 6rem 2rem 8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .membership-cta::before {
+      content: '無為';
+      position: absolute;
+      font-family: var(--font-jp);
+      font-size: clamp(6rem, 15vw, 14rem);
+      font-weight: 200;
+      color: rgba(196, 162, 101, 0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .membership-cta .section-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .membership-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .membership-cta p {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 200;
+      color: var(--silver);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    .membership-cta .cta-btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 1rem 3rem;
+      text-decoration: none;
+      transition: all 0.4s var(--ease-luxury);
+    }
+
+    .membership-cta .cta-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--graphite);
+      padding: 4rem 3rem 2rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-jp);
+      font-size: 2rem;
+      font-weight: 200;
+      letter-spacing: 0.2em;
+      color: var(--white);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--stone);
+    }
+
+    .footer-center {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 200;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--gold);
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-contact-label {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-contact-value a {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 200;
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-contact-value a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--graphite);
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 200;
+      color: var(--ash);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-social a {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 200;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--stone);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: var(--gold);
+    }
+
+    /* ── Reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .tiers-grid {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+
+      .tier-card-image {
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links, .nav-reserve {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .membership-hero {
+        padding: 8rem 1.5rem 3rem;
+        min-height: 50vh;
+      }
+
+      .tiers {
+        padding: 3rem 1rem;
+      }
+
+      .tier-card-body {
+        padding: 2rem 1.5rem;
+      }
+
+      .comparison {
+        padding: 3rem 1rem 4rem;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-right {
+        text-align: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="index.html#philosophy" onclick="closeMobileMenu()">Philosophy</a>
+    <a href="index.html#cuisine" onclick="closeMobileMenu()">Cuisine</a>
+    <a href="index.html#omakase" onclick="closeMobileMenu()">Omakase</a>
+    <a href="index.html#menu" onclick="closeMobileMenu()">Menu</a>
+    <a href="membership.html" onclick="closeMobileMenu()">Membership</a>
+    <a href="index.html#reservation" onclick="closeMobileMenu()">Reserve</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-kanji">無為</span>
+      <span class="nav-logo-divider"></span>
+      <span class="nav-logo-en">Mui</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#philosophy">Philosophy</a></li>
+      <li><a href="index.html#cuisine">Cuisine</a></li>
+      <li><a href="index.html#omakase">Omakase</a></li>
+      <li><a href="index.html#menu">Menu</a></li>
+      <li><a href="membership.html" class="active">Membership</a></li>
+    </ul>
+    <a href="index.html#reservation" class="nav-reserve">Reserve</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main role="main">
+
+  <!-- Membership Hero -->
+  <section class="membership-hero">
+    <span class="section-label reveal">The Inner Circle</span>
+    <h1 class="reveal">Membership</h1>
+    <div class="gold-divider reveal"></div>
+    <p class="hero-statement reveal">MUI membership is not a loyalty card. It is a key to a world most will never see — premium champagne presented tableside, private chef's table evenings, omakase reserved for the inner circle, and access that money alone cannot buy.</p>
+  </section>
+
+  <!-- Opening Month Banner -->
+  <section class="opening-banner reveal">
+    <p class="banner-label">Grand Opening Special</p>
+    <h3>$1 Signature Drinks for Opening Month</h3>
+    <p>All members enjoy $1 drinks from our curated set menu every visit for the entire opening month. Early access before the public waitlist.</p>
+  </section>
+
+  <!-- Tier Cards -->
+  <section class="tiers">
+    <div class="tiers-grid">
+
+      <!-- Prestige -->
+      <div class="tier-card reveal">
+        <img src="images/prestige-tier.png" alt="Prestige Member — MUI Supper Club bar lounge" class="tier-card-image" loading="lazy">
+        <div class="tier-card-body">
+          <h3 class="tier-card-name">Prestige</h3>
+          <p class="tier-card-price">$1,000 <span>/ year</span></p>
+          <p class="tier-card-limit">Limited to 100 Members</p>
+          <p class="tier-card-tagline">Your introduction to the inner circle.</p>
+          <div class="tier-card-divider"></div>
+          <ul class="tier-card-benefits">
+            <li>$1 first drink from curated set menu every visit</li>
+            <li>Early access to MUI before the public</li>
+            <li>Priority upgrade path to VIP &amp; Founder</li>
+            <li>Members-only communications</li>
+          </ul>
+          <a href="mailto:mui.modern.japanese@gmail.com?subject=Prestige%20Membership%20Inquiry" class="tier-card-cta">Inquire Now</a>
+        </div>
+      </div>
+
+      <!-- VIP Club -->
+      <div class="tier-card reveal">
+        <img src="images/vip-tier.png" alt="VIP Club — intimate dining at MUI Supper Club" class="tier-card-image" loading="lazy">
+        <div class="tier-card-body">
+          <h3 class="tier-card-name">VIP Club</h3>
+          <p class="tier-card-price">$2,000 <span>/ year</span></p>
+          <p class="tier-card-limit">Limited to 50 Members</p>
+          <p class="tier-card-tagline">Your champagne alone is worth a quarter of the membership.</p>
+          <div class="tier-card-divider"></div>
+          <ul class="tier-card-benefits">
+            <li>One bottle of premium champagne ($500 value)</li>
+            <li>Complimentary first drink every visit</li>
+            <li>Omakase dinner for two</li>
+            <li>48-hour priority reservations</li>
+            <li>Access to off-menu dishes</li>
+            <li>Seasonal members-only events</li>
+            <li>Personalized birthday celebration</li>
+          </ul>
+          <a href="mailto:mui.modern.japanese@gmail.com?subject=VIP%20Club%20Membership%20Inquiry" class="tier-card-cta">Inquire Now</a>
+        </div>
+      </div>
+
+      <!-- Founder Club -->
+      <div class="tier-card reveal">
+        <img src="images/founder-tier.png" alt="Founder Club — exclusive chef's table at MUI Supper Club" class="tier-card-image" loading="lazy">
+        <div class="tier-card-body">
+          <h3 class="tier-card-name">Founder Club</h3>
+          <p class="tier-card-price">$5,000 <span>/ year</span></p>
+          <p class="tier-card-limit">Limited to 20 Members</p>
+          <p class="tier-card-tagline">$1,000 in champagne alone — the rest is priceless.</p>
+          <div class="tier-card-divider"></div>
+          <ul class="tier-card-benefits">
+            <li>$1,000 worth of premium champagne</li>
+            <li>Complimentary first drink every visit</li>
+            <li>Omakase dinner for six</li>
+            <li>Quarterly private chef's table experience</li>
+            <li>Founder Wall recognition</li>
+            <li>Direct line to management</li>
+            <li>Dedicated concierge service</li>
+            <li>First access to all events and experiences</li>
+            <li>Access to off-menu dishes</li>
+            <li>Personalized birthday celebration</li>
+          </ul>
+          <a href="mailto:mui.modern.japanese@gmail.com?subject=Founder%20Club%20Membership%20Inquiry" class="tier-card-cta">Inquire Now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="comparison">
+    <div class="comparison-header reveal">
+      <span class="section-label">At a Glance</span>
+      <h2>Compare Memberships</h2>
+    </div>
+    <div class="comparison-table-wrap reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Benefit</th>
+            <th>Prestige</th>
+            <th>VIP Club</th>
+            <th>Founder Club</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Annual Investment</td>
+            <td>$1,000</td>
+            <td>$2,000</td>
+            <td>$5,000</td>
+          </tr>
+          <tr>
+            <td>Member Cap</td>
+            <td>100</td>
+            <td>50</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Opening Month $1 Drinks</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Premium Champagne</td>
+            <td class="dash">—</td>
+            <td>$500 value</td>
+            <td>$1,000 value</td>
+          </tr>
+          <tr>
+            <td>Complimentary First Drink</td>
+            <td>$1 from set menu</td>
+            <td class="check">Every visit</td>
+            <td class="check">Every visit</td>
+          </tr>
+          <tr>
+            <td>Omakase Dinner</td>
+            <td class="dash">—</td>
+            <td>Dinner for 2</td>
+            <td>Dinner for 6</td>
+          </tr>
+          <tr>
+            <td>Priority Reservations</td>
+            <td class="dash">—</td>
+            <td class="check">48-hour</td>
+            <td class="check">48-hour</td>
+          </tr>
+          <tr>
+            <td>Off-Menu Dishes</td>
+            <td class="dash">—</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Seasonal Events</td>
+            <td class="dash">—</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Birthday Celebration</td>
+            <td class="dash">—</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Quarterly Chef's Table</td>
+            <td class="dash">—</td>
+            <td class="dash">—</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Founder Wall Recognition</td>
+            <td class="dash">—</td>
+            <td class="dash">—</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Direct Line to Management</td>
+            <td class="dash">—</td>
+            <td class="dash">—</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Dedicated Concierge</td>
+            <td class="dash">—</td>
+            <td class="dash">—</td>
+            <td class="check">&#10003;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="membership-cta">
+    <p class="section-label reveal">Begin Your Journey</p>
+    <h2 class="reveal">Every Tier Is Capped</h2>
+    <p class="reveal">100 Prestige, 50 VIP Club, and just 20 Founder Club memberships. Once they are claimed, the doors close. This is not exclusivity for its own sake — it is a promise of intimacy.</p>
+    <a href="mailto:mui.modern.japanese@gmail.com?subject=MUI%20Membership%20Inquiry" class="cta-btn reveal">Apply for Membership</a>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">無為</span>
+        <span class="footer-tagline">Where Fire Meets the Sea</span>
+      </div>
+      <div class="footer-center">
+        <nav class="footer-nav">
+          <a href="index.html#philosophy">Philosophy</a>
+          <a href="index.html#cuisine">Cuisine</a>
+          <a href="index.html#signatures">Signatures</a>
+          <a href="index.html#omakase">Omakase</a>
+          <a href="index.html#menu">Menu</a>
+          <a href="membership.html">Membership</a>
+          <a href="index.html#reservation">Reserve</a>
+        </nav>
+      </div>
+      <div class="footer-right">
+        <p class="footer-contact-label">Inquiries</p>
+        <p class="footer-contact-value">
+          <a href="mailto:mui.modern.japanese@gmail.com">mui.modern.japanese@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 MUI 無為. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">WeChat</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Custom Cursor ──
+    const cursor = document.getElementById('cursor');
+    let cursorX = 0, cursorY = 0, currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+    });
+
+    function animateCursor() {
+      currentX += (cursorX - currentX) * 0.15;
+      currentY += (cursorY - currentY) * 0.15;
+      cursor.style.left = currentX + 'px';
+      cursor.style.top = currentY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button, .tier-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+
+    if ('ontouchstart' in window) {
+      cursor.style.display = 'none';
+    }
+
+    // ── Mobile Menu ──
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      const isOpen = mobileMenu.classList.contains('active');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    function closeMobileMenu() {
+      navToggle.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    // ── Scroll Reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 100);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ── Tier card reveal with stagger ──
+    const tierCards = document.querySelectorAll('.tier-card');
+    const tierObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 200);
+          tierObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    tierCards.forEach(el => tierObserver.observe(el));
+  </script>
+
+</body>
+</html>
